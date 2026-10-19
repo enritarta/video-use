@@ -103,6 +103,8 @@ For animations, create `<edit>/animations/slot_<id>/` with `Bash` and spawn a su
    If anything fails: fix → re-render → re-eval. **Cap at 3 self-eval passes** — if issues remain after 3, flag them to the user rather than looping forever. Only present the preview once the self-eval passes.
 8. **Iterate + persist.** Natural-language feedback, re-plan, re-render. Never re-transcribe. Final render on confirmation. Append to `project.md`.
 
+   If the Flask MCP server is connected (tools such as `get_guide` and `wait_for_feedback`), offer to upload the preview to Flask (flask.do) so the user, or whoever approves the cut, can leave notes on the exact moments to change. Ask once before the first upload. Read the notes back with `wait_for_feedback`. Their times are on the output timeline, so map each one to the EDL range playing at that moment before you re-plan. Upload each re-render as the next version of the same asset (`version_of`). Call `get_guide(topic: "instructions")` first; it has the upload steps.
+
 ## Cut craft (techniques)
 
 - **Audio-first.** Candidate cuts from word boundaries and silence gaps.
